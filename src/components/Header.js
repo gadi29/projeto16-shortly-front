@@ -85,7 +85,7 @@ const Container = styled.div`
   align-items: center;
 
   @media screen and (max-width: 480px) {
-    margin-top: 15px;
+    margin-top: 0;
   }
 `
 
