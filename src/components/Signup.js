@@ -74,6 +74,8 @@ const Container = styled.div`
 
   form {
     width: 55%;
+    margin-bottom: 30px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
