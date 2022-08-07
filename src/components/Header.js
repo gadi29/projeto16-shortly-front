@@ -76,21 +76,16 @@ export default function Header() {
 
 const Container = styled.div`
   width: 100%;
-  height: 200px;
-  margin-top: 30px;
+  height: 150px;
 
+  position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-
-  @media screen and (max-width: 480px) {
-    margin-top: 0;
-  }
 `
 
 const Logo = styled.div`
   display: flex;
+  margin-top: 60px;
 
   h1 {
     font-size: 64px;
@@ -112,14 +107,21 @@ const Logo = styled.div`
 `;
 
 const SigninSignup = styled.div`
+  background-color: #FFFFFF;
+
   width: 90%;
-  margin-bottom: 40px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  z-index: 1;
 
   display: flex;
   justify-content: flex-end;
+  position: fixed;
 
-  font-size: 14px;
-  font-weight: 400;
+  h3, h4 {
+    font-size: 14px;
+    font-weight: 400;
+  }
 
   h3 {
     color: #5D9040;
@@ -132,11 +134,16 @@ const SigninSignup = styled.div`
 `
 
 const TopBar = styled.div`
+  background-color: #FFFFFF;
+
   width: 90%;
-  margin-bottom: 40px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  z-index: 1;
   
   display: flex;
   justify-content: space-between;
+  position: fixed;
 
   h3 {
     color: #5D9040;
@@ -148,7 +155,7 @@ const TopBar = styled.div`
   }
 
   @media screen and (max-width: 480px) {
-    h3 h4 {
+    h3, h4 {
       font-size: 13px;
     }
   }
@@ -157,16 +164,18 @@ const TopBar = styled.div`
 const RightSide = styled.div`
   display: flex;
 
-  h3 {
+  h3, h4 {
     color: #9C9C9C;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  h3 {
     margin-right: 10px;
   }
 
   h4 {
     text-decoration: underline;
-    color: #9C9C9C;
-    font-size: 14px;
-    font-weight: 400;
     cursor: pointer;
   }
 

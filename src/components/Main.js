@@ -95,8 +95,7 @@ function Main() {
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
-  margin-top: 70px;
+  margin-top: 100px;
 
   display: flex;
   flex-direction: column;
@@ -105,10 +104,10 @@ const Container = styled.div`
 
   form {
     width: 85%;
-    margin-bottom: 25px;
 
     display: flex;
     justify-content: space-between;
+
 
     input {
       background: #FFFFFF;
@@ -173,6 +172,24 @@ const Container = styled.div`
       }
     }
   }
+`;
+
+const UserLinks = styled.div`
+  background: #FFFFFF;
+
+  width: 85%;
+  margin-top: 50px;
+  height: 100%;
+
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ::-webkit-scrollbar {
+    display: none;
+}
 `;
 
 const Link = styled.div`
@@ -275,19 +292,6 @@ const Link = styled.div`
       width: 20%;
     }
   }
-`;
-
-const UserLinks = styled.div`
-  background: #FFFFFF;
-  
-  width: 85%;
-  max-height: 30%;
-  margin-top: 35px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
 export default Main;
