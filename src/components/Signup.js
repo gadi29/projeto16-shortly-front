@@ -19,7 +19,7 @@ function Signup() {
       alert('Usuário cadastrado com sucesso!')
       navigate('/signin');
     } catch (error) {
-      alert(error);
+      alert("Ocorreu um erro... Confirme todos os campos e tente novamente!");
       setLoading(false);
     }
   }
