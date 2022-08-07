@@ -27,26 +27,44 @@ function Initial() {
   }), []);
   
   return (
-    <Container>
-      <h2><img src={trophy} alt="troféu" />Ranking</h2>
-      <Ranking loading={loading}>
-        {loading ? <ThreeDots /> : 
-          <Users>
-            {ranking.map((user, index) => 
-              <div key={index}>
-                {index+1}. {user.name} - {user.linksCount} links - {user.visitCount} visualizações
-              </div>)}
-          </Users>
-        }
-      </Ranking>
-      <h2>{token ? <></> : "Crie sua conta para usar nosso serviço!"}</h2>
-    </Container>
+    <Body>
+      <Container>
+        <h2><img src={trophy} alt="troféu" />Ranking</h2>
+        <Ranking loading={loading}>
+          {loading ? <ThreeDots /> : 
+            <Users>
+              {ranking.map((user, index) => 
+                <div key={index}>
+                  <h3>
+                    {index+1}. {user.name}
+                  </h3>
+                  <h3>
+                    - {user.linksCount} {user.linksCount === "1" ? "link" : "links"}
+                  </h3>
+                  <h3>
+                    - {user.visitCount} {user.visitCount === "1" ? "visualização" : "visualizações"}
+                  </h3>
+                </div>)}
+            </Users>
+          }
+        </Ranking>
+        <h2>{token ? <></> : "Crie sua conta para usar nosso serviço!"}</h2>
+      </Container>
+    </Body>
   );
 }
 
-const Container = styled.div`
+const Body = styled.body`
   width: 100%;
-  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Container = styled.div`
+  width: 90%;
   margin-top: 60px;
 
   display: flex;
@@ -58,11 +76,18 @@ const Container = styled.div`
     color: #000000;
     font-size: 36px;
     font-weight: 700;
+    text-align: center;
 
     margin-bottom: 30px;
 
     display: flex;
     align-items: center;
+  }
+
+  @media screen and (max-width: 480px) {
+    h2:last-of-type {
+      font-size: 32px;
+    }
   }
 `
 
@@ -72,14 +97,16 @@ const Ranking = styled.div`
   box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);
   border-radius: 24px 24px 0px 0px;
 
-  width: 75%;
-  padding-top: 20px;
-  padding-left: 40px;
-  padding-bottom: 30px;
+  width: 85%;
+  padding: 20px 40px 30px 40px;
   margin-bottom: 60px;
 
   display: flex;
   justify-content: ${({ loading }) => loading ? "center" : "flex-start" };
+
+  @media screen and (max-width: 480px) {
+    justify-content: center;
+  }
 `
 
 const Users = styled.div`
@@ -87,8 +114,29 @@ const Users = styled.div`
   flex-direction: column;
 
   div {
-    margin-top: 10px;
-    font-size: 22px;
+    display: flex;
+    align-items: center;
+    h3 {
+      font-size: 22px;
+      margin: 0 4px;
+      margin-top: 10px;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    div {
+      h3:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    div {
+      h3:last-of-type {
+        display: none;
+      }
+    }
   }
 `;
 

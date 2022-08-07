@@ -5,7 +5,7 @@ import axios from "axios";
 
 import TokenContext from "../contexts/TokenContext";
 
-import logo from "../assets/images/Logo.png";
+import logo from "../assets/images/logo.png";
 
 export default function Header() {
   const { token, setToken } = useContext(TokenContext);
@@ -57,15 +57,18 @@ export default function Header() {
       : 
       <SigninSignup>
         <Link to={'/signin'}>
-          <Signin>Entrar</Signin>
+          <h3>Entrar</h3>
         </Link>
         <Link to={'/signup'}>
-          <Signup>Cadastrar-se</Signup>
+          <h4>Cadastrar-se</h4>
         </Link>
       </SigninSignup>
       }
       <Link to={'/'}>
-        <img src={logo} alt="logo" />
+        <Logo>
+          <h1>Shortly</h1>
+          <img src={logo} alt="short verde" />
+        </Logo>
       </Link>
     </Container>
   );
@@ -80,11 +83,34 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+
 `
 
+const Logo = styled.div`
+  display: flex;
+
+  h1 {
+    font-size: 64px;
+    font-weight: 200;
+    color: #000000;
+  }
+  img {
+    width: 100px;
+  }
+
+  @media screen and (max-width: 480px) {
+    h1 {
+      font-size: 55px;
+    }
+    img {
+      width: 80px;
+    }
+  }
+`;
+
 const SigninSignup = styled.div`
-  width: 100%;
-  margin-right: 170px;
+  width: 90%;
   margin-bottom: 40px;
 
   display: flex;
@@ -92,16 +118,15 @@ const SigninSignup = styled.div`
 
   font-size: 14px;
   font-weight: 400;
-`
 
-const Signin = styled.h2`
-  color: #5D9040;
-  
-  margin-right: 22px;
-`
+  h3 {
+    color: #5D9040;
+    margin-right: 22px;
+  }
 
-const Signup = styled.h2`
-  color: #9C9C9C;
+  h4 {
+    color: #9C9C9C;
+  }
 `
 
 const TopBar = styled.div`
@@ -115,6 +140,15 @@ const TopBar = styled.div`
     color: #5D9040;
     font-size: 14px;
     font-weight: 400;
+    text-align: center;
+
+    margin-right: 25px;
+  }
+
+  @media screen and (max-width: 480px) {
+    h3 h4 {
+      font-size: 13px;
+    }
   }
 `
 

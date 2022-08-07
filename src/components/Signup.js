@@ -59,7 +59,7 @@ function Signup() {
           disabled={loading}
           required
         />
-        <button type="submit">{loading ? <ThreeDots color="#FFFFFF" width={50} height={20} /> : "Entrar"}</button>
+        <button type="submit">{loading ? <ThreeDots color="#FFFFFF" width={50} height={20} /> : "Cadastrar"}</button>
       </form>
     </Container>
   );
@@ -104,6 +104,23 @@ const Container = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    form {
+      width: 65%;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-top: 45px;
+
+    form {
+      width: 75%;
+      button {
+        font-size: 12px;
+      }
     }
   }
 `;

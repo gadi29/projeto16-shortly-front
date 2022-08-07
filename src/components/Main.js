@@ -49,16 +49,18 @@ function Main() {
   }
 
   function deleteLink(id) {
-    setLoading(true);
+    if (window.confirm("Tem certeza que deseja deletar este link?")) {
+      setLoading(true);
 
-    const response = axios.delete(`https://projeto16--shortly.herokuapp.com/urls/${id}`, config);
-    response.then(() => {
-      setState(!state);
-    });
-    response.catch(r => {
-      alert(`Erro ${r.response.status}`);
-      setLoading(false);
-    });
+      const response = axios.delete(`https://projeto16--shortly.herokuapp.com/urls/${id}`, config);
+      response.then(() => {
+        setState(!state);
+      });
+      response.catch(r => {
+        alert(`Erro ${r.response.status}`);
+        setLoading(false);
+      });
+    }
   }
 
   return (
@@ -79,21 +81,21 @@ function Main() {
         userUrls.shortenedUrls ?
         userUrls.shortenedUrls.map((link, index) => 
           <Link>
-            <div key={index}>
+            <a key={index} href={`https://projeto16--shortly.herokuapp.com/urls/open/${link.shortUrl}`} target="_blank" onClick={() => setTimeout(() => setState(!state), 100)} rel="noopener noreferrer">
               <h2>{link.url}</h2>
               <h2>{link.shortUrl}</h2>
               <h2>Quantidade de visitantes: {link.visitCount}</h2>
-            </div>
-            <button><img src={trash} alt="excluir" /></button>
+            </a>
+            <button onClick={() => deleteLink(link.id)}><img src={trash} alt="excluir" /></button>
           </Link>) : <h2>Você ainda não possui links encurtados</h2>}
       </UserLinks>
     </Container>
-    
   );
 }
 
 const Container = styled.div`
   width: 100%;
+  height: 100%;
   margin-top: 70px;
 
   display: flex;
@@ -134,18 +136,57 @@ const Container = styled.div`
       align-items: center;
     }
   }
+
+  @media screen and (max-width: 1024px) {
+    form {
+      button {
+        font-size: 12px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    margin-top: 50px;
+
+    form {
+      input {
+        width: 77%;
+      }
+
+      button {
+        width: 18%;
+        font-size: 11px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-top: 30px;
+    
+    form {
+      input {
+        width: 70%;
+      }
+
+      button {
+        width: 25%;
+      }
+    }
+  }
 `;
 
 const Link = styled.div`
   width: 100%;
+  height: 70px;
   margin-bottom: 25px;
   display: flex;
 
-  div {
+  a {
     background: #80CC74;
     box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);
     border-radius: 12px 0px 0px 12px;
     color: #FFFFFF;
+    cursor: pointer;
 
     width: 90%;
     padding: 25px;
@@ -167,11 +208,13 @@ const Link = styled.div`
       text-overflow: ellipsis;
 
       width: 40%;
+      display: block;
       justify-content: flex-start;
     }
 
     h2:last-of-type {
       justify-content: flex-end;
+      text-align: center;
     }
   }
 
@@ -183,6 +226,54 @@ const Link = styled.div`
     cursor: ${({ loading }) => loading ? "initial" : "pointer"};
 
     width: 10%;
+    height: 100%;
+
+    img {
+      height: 45%;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    button {
+      img {
+      height: 35%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    a {
+      width: 85%;
+      h2 {
+        width: 40%;
+      }
+      h2:first-of-type {
+        width: 60%;
+      }
+      h2:last-of-type {
+        display: none;
+      }
+    }
+
+    button {
+      width: 15%;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    a {
+      width: 80%;
+      h2 {
+        width: 100%;
+      }
+      h2:first-of-type {
+        display: none;
+      }
+    }
+    
+    button {
+      width: 20%;
+    }
   }
 `;
 
@@ -190,6 +281,7 @@ const UserLinks = styled.div`
   background: #FFFFFF;
   
   width: 85%;
+  max-height: 30%;
   margin-top: 35px;
 
   display: flex;
