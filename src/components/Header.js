@@ -85,7 +85,7 @@ const Container = styled.div`
 
 const Logo = styled.div`
   display: flex;
-  margin-top: 60px;
+  margin-top: 75px;
 
   h1 {
     font-size: 64px;
@@ -111,7 +111,7 @@ const SigninSignup = styled.div`
 
   width: 90%;
   padding-top: 30px;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
   z-index: 1;
 
   display: flex;
@@ -138,7 +138,7 @@ const TopBar = styled.div`
 
   width: 90%;
   padding-top: 30px;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
   z-index: 1;
   
   display: flex;
